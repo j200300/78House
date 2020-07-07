@@ -7,14 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
-	<!--boostrap START-->
+	<!--js START-->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-	<!--boostrap END-->
+	<!--js END-->
 	
 	<!--fontawesome-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -33,6 +34,50 @@
 <body>
 	<script>
 	$(function() {
+		var topNav = new Vue({
+			el: '#navbarNav',
+			data: {
+				items: [
+					{
+						link: '#features',
+						text: '我們的特色'
+					},
+					{
+						link: '#specials',
+						text: '特別服務'
+					},
+					{
+						link: '#album',
+						text: '房源照片'
+					},
+					{
+						link: '#bedtype',
+						text: '床型資訊'
+					},
+					{
+						link: '#service',
+						text: '設備與服務'
+					},
+					{
+						link: '#map',
+						text: '位置'
+					},
+					{
+						link: '#reservation',
+						text: '日曆'
+					},
+					{
+						link: '#contact',
+						text: '聯絡我們'
+					},
+					{
+						link: 'guidebook.html',
+						text: '旅遊指南'
+					}
+				]
+			}
+		});
+		
 		let cal_id = "9cluv8jb2q8b395utgb29vo0bhktg6rd%40import.calendar.google.com",
 			api_key = "AIzaSyB2cDny-qkz8CTRD_g1Wy_urXDD7HoE29U";
 		
@@ -148,32 +193,8 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="#features">我們的特色</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#specials">特別服務</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#album">房源照片</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#bedtype">床型資訊</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#service">設備與服務</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#map">位置</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#reservation">日曆</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#contact">聯絡我們</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="guidebook.html">旅遊指南</a>
+					<li class="nav-item" v-for="item in items">
+						<a class="nav-link" v-bind:href="item.link">{{ item.text }}</a>
 					</li>
 				</ul>
 			</div>
